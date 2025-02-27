@@ -15,18 +15,22 @@ function updatecountdown(){
      || ${minutes}minutes || ${seconds} Seconds `;
 }
 setInterval(updatecountdown,1000);
-function changesong(newsong){
-    const current = new Date();
-    const targetday = new Date(current.getFullYear(),2, 1);
-    if (current >= targetday){
-        let audio = document.getElementById("countdownAudio");
-        let source = document.getElementById("ramadanAudio");
-        source.src = newsong;
-        audio.onload();
-        audio.onplay();
+document.addEventListener("DOMContentLoaded", function () {
+    let audio = document.getElementById("ramadanAudio");
+    let source = document.getElementById("audioSource");
 
+    // Get the current date
+    let today = new Date();
+    let march1st = new Date(today.getFullYear(), 2, 1); // Month index starts at 0 (January = 0, March = 2)
+
+    if (today >= march1st) {
+        source.src = "song2.mp3"; // Change to the new song
+        audio.load(); // Reload the audio element
+        audio.play(); // Play the new song
     }
-}
+});
+
+
 setInterval(function() {
     changesong("song2.mp3");
 }, 1000);
