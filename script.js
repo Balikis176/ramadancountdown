@@ -6,8 +6,8 @@ function updatecountdown(){
     const ramadanAudio = document.getElementById("ramadanAudio");
     countdownAudio.play();
     if (timediff <= 0) {
-        document.getElementById("timer").innerHTML = "Ramadan Mubarak";
-        countdownElement.innerHTML = "Ramadan Mubarak!";
+        document.getElementById("timer").innerHTML = "Ramadan Mubarak!";
+        document.getElementById("dua").innerHTML = "May this blessed month bring you peace,hapiness and fulfillment.Wishing you a blessed Ramadan"
         countdownAudio.pause();
         countdownAudio.currentTime = 0; 
         ramadanAudio.play(); 
