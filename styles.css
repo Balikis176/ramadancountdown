@@ -1,0 +1,88 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-image: url(images/1714338430626.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+
+}
+.container{
+    background: rgba(0, 0, 0, 0.4);
+    padding: 50px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 90px;
+    width: 90%;
+    max-width: 800px;
+    animation: fadeIn 2s ease-in-out;
+}
+h1{
+    font-size: 48px;
+    animation: bounceIn 2s ease-in-out;
+}
+.greeting{
+    font-size: 44px;
+    margin-bottom: 30px;
+    color: rgb(254, 254, 255);
+    animation: fadeIn 3s ease-in-out;
+}
+#timer{
+    font-size: 24px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    animation: fadeIn 4s ease-in-out;
+}
+.dua{
+    font-size: 18px;
+    margin-top: 20px;
+    font-style: italic;
+    color:white;
+    animation:fadeIn 5s ease-in-out;
+}
+.share-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    animation: glow 1s infinite alternate;
+}
+@keyframes fadeIn {
+    0%{opacity: 0; transform: translateY(-20px);}
+    100%{ opacity: 1; transform:translateY(0)}
+}
+@keyframes bounceIn {
+    0%{ transform: scale(0.5); opacity: 0;}
+    50% {transform: scale(1.1); opacity: 1}
+    100% { transform: scale(1); }
+}
+@keyframes glow {
+    from {box-shadow: 0 0 5px #fcd34d;}
+    to {box-shadow: 0 0 20px #fcd34d;}
+}
+@media (max-width:768){
+    .body{
+        background-image: url(images/1714338430626.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+       
+    }
+    .container{
+        width: 100%;
+        padding:15px;
+    }
+    .h1{ font-size: 12px;}
+    .greeting{font-size: 12px;}
+    #timer{font-size: 12px;}
+    .dua{ font-size: 10px;}
+    .share-btn{font-size: 10px; padding: 6px;}
+}
