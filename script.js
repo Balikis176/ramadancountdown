@@ -1,39 +1,41 @@
-const targetdate = new Date("March 1, 2025 00:00:00").getTime();
-function updatecountdown(){
-    const now = new Date().getTime();
-    const timediff =  targetdate - now;
-    if (timediff <= 0) {
-        document.getElementById("timer").innerHTML = "Ramadan Mubarak!";
-        document.getElementById("dua").innerHTML = "May this blessed month bring you peace,hapiness and fulfillment.Wishing you a blessed Ramadan";
-         return;
-    }
-    const days = Math.floor(timediff/ (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timediff % (1000 * 60 * 60 *24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timediff % (1000 * 60 * 60))/ (1000 * 60));
-    const seconds = Math.floor((timediff % (1000 * 60))/1000);
-    document.getElementById("timer").innerHTML = `${days} days || ${hours} hours
-     || ${minutes}minutes || ${seconds} Seconds `;
-}
-setInterval(updatecountdown,1000);
-document.addEventListener("DOMContentLoaded", function () {
-    let audio = document.getElementById("ramadanAudio");
-    let source = document.getElementById("audioSource");
 
-    // Get the current date
-    let today = new Date();
-    let march1st = new Date(today.getFullYear(), 2, 1); // Month index starts at 0 (January = 0, March = 2)
+    document.addEventListener("DOMContentLoaded", function () {
+       
+        const ramadanDate = new Date("March 10, 2024 00:00:00").getTime();
+        const countdownElement = document.getElementById("timer");
+        const duaelement = document.getElementById("dua");
+        const countdownAudio = document.getElementById("countdownAudio");
+        const ramadanAudio = document.getElementById("ramadanAudio");
 
-    if (today >= march1st) {
-        source.src = "song2.mp3"; // Change to the new song
-        audio.load(); // Reload the audio element
-        audio.play(); // Play the new song
-    }
-});
+        function startMusic() {
+            countdownAudio.play().catch(error => console.log("Auto-play blocked, user interaction required."));
+        }
+        startMusic();
+
+        const interval = setInterval(() => {
+            const now = new Date().getTime();
+            const timeLeft = ramadanDate - now;
+
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                clearInterval(interval);
+                countdownElement.innerHTML = "Ramadan Mubarak!";
+                duaelement.innerHTML = "May this blessed month bring you happiness, peace and spiritual fullfilment. Enjoy the special moments of reflection and the joy of breaking fast with loved ones.";
+                countdownAudio.pause();
+                countdownAudio.currentTime = 0; 
+                ramadanAudio.play(); 
+            }
+        }, 1000);
+    });
 
 
-setInterval(function() {
-    changesong("song2.mp3");
-}, 1000);
+
 
 document.getElementById("shareBtn").addEventListener("click", function () {
     let pageTitle = document.title;
